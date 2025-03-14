@@ -1,0 +1,17 @@
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  print('Digite o nome de cada participante, ou "fim" para finalizar a lista:');
+  List<String> nomes = [];
+  while (true) {
+    String nome = stdin.readLineSync()!;
+    if (nome.toLowerCase() == 'fim') break;
+    nomes.add(nome);
+  }
+
+  var rng = Random();
+  int sorteado = rng.nextInt(nomes.length);
+
+  print('O sorteado foi: ${nomes[sorteado]}');
+}
