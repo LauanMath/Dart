@@ -1,0 +1,37 @@
+import 'dart:io';
+
+void main() {
+  print('Escolha a moeda de origem:');
+  print('1. Real');
+  print('2. Dólar');
+  print('3. Euro');
+  int origem = int.parse(stdin.readLineSync()!);
+
+  print('Escolha a moeda de destino:');
+  print('1. Real');
+  print('2. Dólar');
+  print('3. Euro');
+  int destino = int.parse(stdin.readLineSync()!);
+
+  print('Digite o valor a ser convertido:');
+  double valor = double.parse(stdin.readLineSync()!);
+
+  double taxaConversao = 1.0;
+
+  if (origem == 1 && destino == 2) {
+    taxaConversao = 0.19; // Real para Dólar
+  } else if (origem == 1 && destino == 3) {
+    taxaConversao = 0.18; // Real para Euro
+  } else if (origem == 2 && destino == 1) {
+    taxaConversao = 5.3; // Dólar para Real
+  } else if (origem == 2 && destino == 3) {
+    taxaConversao = 0.95; // Dólar para Euro
+  } else if (origem == 3 && destino == 1) {
+    taxaConversao = 5.6; // Euro para Real
+  } else if (origem == 3 && destino == 2) {
+    taxaConversao = 1.05; // Euro para Dólar
+  }
+
+  double resultado = valor * taxaConversao;
+  print('Valor convertido: $resultado');
+}
