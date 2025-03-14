@@ -1,0 +1,26 @@
+import 'dart:math';
+import 'dart:io';
+
+void main() {
+  const caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const caracteresEspeciais = '!@#\$%^&*()_-+=<>?';
+
+  print('Digite o tamanho desejado para a senha:');
+  int tamanho = int.parse(stdin.readLineSync()!);
+
+  print('Deseja incluir caracteres especiais? (s/n)');
+  String incluirEspeciais = stdin.readLineSync()!;
+
+  String senha = '';
+  var rng = Random();
+
+  for (int i = 0; i < tamanho; i++) {
+    senha += caracteres[rng.nextInt(caracteres.length)];
+  }
+
+  if (incluirEspeciais == 's') {
+    senha += caracteresEspeciais[rng.nextInt(caracteresEspeciais.length)];
+  }
+
+  print('Senha gerada: $senha');
+}
